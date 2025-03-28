@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class PresentedCourse {
     public int id;
-    public static ArrayList<PresentedCourse> presentedCourseList;
+    public static ArrayList<PresentedCourse> presentedCourseList = new ArrayList<>();
     public int courseID;
     public int professorID;
     public int capacity;
@@ -14,9 +14,10 @@ public class PresentedCourse {
         this.courseID = courseID;
         this.professorID = professorID;
         capacity = maxCapacity;
-        presentedCourseList.ensureCapacity(maxCapacity);
+        studentIds = new ArrayList<>();
+        studentIds.ensureCapacity(maxCapacity);
         presentedCourseList.add(this);
-        id = presentedCourseList.size();
+        this.id = presentedCourseList.size();
     }
 
     public static PresentedCourse findById(int ID) {

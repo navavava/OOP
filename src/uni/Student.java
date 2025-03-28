@@ -17,7 +17,8 @@ public class Student {
         this.personID = personID;
         this.entranceYear = entranceYear;
         this.majorID = majorID;
-        Major.findById(majorID).addStudent();
+        if (Major.findById(majorID) != null)
+            Major.findById(majorID).addStudent();
         this.setStudentCode();
         studentList.add(this);
         this.id = studentList.size();
@@ -32,7 +33,10 @@ public class Student {
     }
 
     public void setStudentCode() {
-        int studentID = (Major.findById(majorID).numberOfStudents + (majorID * 100) + (entranceYear) * 10000);
-        this.studentID = Integer.toString(studentID);
+        int studentID;
+        if (Major.findById(majorID) != null) {
+            studentID = (Major.findById(majorID).numberOfStudents + (majorID * 100) + (entranceYear) * 10000);
+            this.studentID = Integer.toString(studentID);
+        }
     }
 }

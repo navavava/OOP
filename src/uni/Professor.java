@@ -9,6 +9,7 @@ public class Professor {
     public int majorID;
 
     public Professor(int personID, int majorID) {
+        this.personID = personID;
         this.majorID = majorID;
         professorList.add(this);
         this.id = professorList.size();
