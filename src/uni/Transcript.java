@@ -1,5 +1,7 @@
 package uni;
 
+import base.Person;
+
 import java.util.HashMap;
 
 public class Transcript {
@@ -21,7 +23,9 @@ public class Transcript {
     }
 
     public void printTranscript() {
-        System.out.println("student code: " + this.studentID);
+        System.out.println("Student's name: " + Person.findByID(Student.findById(this.studentID).personID).name);
+        System.out.println("Student's code: " + this.studentID);
+        System.out.println("Student's report card: \n");
         for (Integer i : transcript.keySet()) {
             System.out.println("course name: " + Course.findById(i).title + "grade: " + transcript.get(i));
         }
