@@ -10,9 +10,10 @@ public class Major {
     public int numberOfStudents = 0;
 
     public Major(String name, int capacity) {
-        majorList.add(this);
         this.name = name;
         this.capacity = capacity;
+        majorList.add(this);
+        this.id = majorList.size();
     }
 
     public static Major findById(int id) {

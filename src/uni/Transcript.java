@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Transcript {
     public int studentID;
-    public HashMap<Integer, Double> transcript = new HashMap<>();
+    public HashMap<Integer, Double> transcript;
 
     public Transcript(int studentID) {
         this.studentID = studentID;
@@ -23,13 +23,15 @@ public class Transcript {
     public void printTranscript() {
         System.out.println("student code: " + this.studentID);
         for (Integer i : transcript.keySet()) {
-            System.out.println("course ID: " + i + "grade: " + transcript.get(i));
+            System.out.println("course name: " + Course.findById(i).title + "grade: " + transcript.get(i));
         }
     }
 
     public double getGPA() {
+        double gpa = 0;
         for (Integer i : transcript.keySet()) {
-
+            gpa = +(transcript.get(i) * Course.findById(i).units);
         }
+        return gpa;
     }
 }
